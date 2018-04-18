@@ -3,12 +3,10 @@ package application;
 import java.util.Arrays;
 import java.util.List;
 
-import javafx.collections.ObservableList;
-
 
 /**
-* Users - prosta klasa, zawierajaca informacje o uzytkownikach z roznych srodowisk
-* oraz haslach
+* Users - prosta klasa, zawierająca informacje o użytkownikach z różnych środowisk
+* oraz hasłach
 * 
 * @author Karolina Bilewicz / K.Bilewicz@stud.elka.pw.edu.pl
 * @version 0.9
@@ -23,7 +21,7 @@ public class Users {
 	private List<String> passListDeweloperskie;
 	
 	/** Konstruktor Users
-	 * odgornie tworzy listy uzytkownikow wraz z haslami dla nich
+	 * odgórnie tworzy listy użytkowników wraz z hasłami dla nich
 	 */
 	Users()
 	{
@@ -36,11 +34,11 @@ public class Users {
 		passListDeweloperskie= Arrays.asList("tomasz", "kamila", "grzegorz");
 	}
 	
-	/** Metoda isPasswordValid. Autentykuje uzytkownikow
-	 * @param user nazwa uzytkownika
-	 * @param pass haslo uzytkownika
-	 * @param current aktualne srodowisko, do ktorego probuje sie zalogowac dany uzytkownik
-	 * @return Zwraca prawde, jesli autentykacja uzytkownika powiodla sie.
+	/** Metoda isPasswordValid. Autentykuje użytkowników
+	 * @param user nazwa użytkownika
+	 * @param pass hasło użytkownika
+	 * @param current aktualne środowisko, do którego próbuje się zalogować dany użytkownik
+	 * @return Zwraca prawdę, jeśli autentykacja użytkownika powiodła się.
 	 */
 	public Boolean isPasswordValid(String user, String pass, Environment current) {
 		int index;
@@ -61,9 +59,9 @@ public class Users {
 		return false;
 		
 	}
-	/** Metoda getUserList. Zwraca nazwy uzytkownikow dla danego srodowiska
-	 * @param current aktualne srodowisko
-	 * @return nazwy uzytkownikow
+	/** Metoda getUserList. Zwraca nazwy użytkowników dla danego środowiska
+	 * @param current aktualne środowisko
+	 * @return nazwy użytkowników
 	 */
 	public List<String> getUserList(Environment current) {
 		if(current.getName() == "Produkcyjne")

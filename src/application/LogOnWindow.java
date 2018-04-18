@@ -7,23 +7,23 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 /**
-* Moja glowna klasa, nazwana LogOnWindow.
-* Zbudowana na podstawie wskazowek projektowych.
-* Generuje okno logowania za pomoca klasy LogonDialog oraz alert, zarowno w razie powodzenia,
-* kiedy to informuje o wybranym srodowisku oraz o tym, jaki uzytkownik sie zalogowal,
-* jak i nie, kiedy to informuje o bledzie logowania.
+* Moja glówna klasa, nazwana LogOnWindow.
+* Zbudowana na podstawie wskazówek projektowych.
+* Generuje okno logowania za pomocą klasy LogonDialog oraz alert, zarówno w razie powodzenia,
+* kiedy to informuje o wybranym środowisku oraz o tym, jaki użytkownik sie zalogował,
+* jak i nie, kiedy to informuje o błędzie logowania.
 * 
 * @author Karolina Bilewicz / K.Bilewicz@stud.elka.pw.edu.pl
 * @version 0.9
 */
 public class LogOnWindow extends Application {
-	/** Metoda start. Glowny punkt wejsciowy aplikacji JavaFX. 
-	 * Jest wolana, kiedy metoda init skonczy sie wykonywac i po tym, kiedy system jest gotowy na to,
-	 * aby aplikacja zaczela dzialac.
-	 * Tworzy ona obiekt klasy LogonDialog i wywoluje na nim metode showAndWait.
+	/** Metoda start. Glówny punkt wejściowy aplikacji JavaFX. 
+	 * Jest wołana, kiedy metoda init skończy się wykonywać i po tym, kiedy system jest gotowy na to,
+	 * aby aplikacja zaczęła działac.
+	 * Tworzy ona obiekt klasy LogonDialog i wywołuje na nim metodę showAndWait.
 	 *
-	 * @param primaryStage mozna ustawic scene aplikacji na primaryStage.
-	 * @exception Exception gdy bedzie wyjatek do obsluzenia
+	 * @param primaryStage można ustawić scene aplikacji na primaryStage.
+	 * @exception Exception gdy będzie wyjątek do obsłużenia
 	 * 
 	 */
 	@Override
@@ -39,7 +39,7 @@ public class LogOnWindow extends Application {
 			alert.setHeaderText(null);
 			Pair<application.Environment, String> p = result.get();
 			
-			String message = "Wybrane srodowisko: " + p.getKey().toString() + 
+			String message = "Wybrane środowisko: " + p.getKey().toString() + 
 					". Zalogowano jako " + p.getValue();
 			alert.setContentText(message);
 
@@ -57,7 +57,7 @@ public class LogOnWindow extends Application {
 	
 	/** Metoda main. 
 	 *
-	 * @param args argumenty wiersza polecen
+	 * @param args argumenty wiersza poleceń
 	 */
 	public static void main(String[] args) {
 		launch(args);

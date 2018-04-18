@@ -9,12 +9,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
 /**
-* LogonDialog - klasa, ktora tworzy okienko logowania, kiedy tworzony jest obiekt tej klasy
+* LogonDialog - klasa, która tworzy okienko logowania, kiedy tworzony jest obiekt tej klasy
 * 
 * @author Karolina Bilewicz / K.Bilewicz@stud.elka.pw.edu.pl
 * @version 0.9
@@ -34,25 +35,25 @@ public class LogonDialog {
 	private ButtonType cancelButton;
 	/** Konstruktor
 	 * Tworzy okno logowania ze wszystkimi potrzebnymi obiektami.
-	 * Lista wyboru srodowiska jest na bazie ChoiceBox.
-	 * Lista wyboru uzytkownika jest na bazie ComboBox.
-	 * Pole wpisywania hasla na bazie PasswordField.
+	 * Lista wyboru środowiska jest na bazie ChoiceBox.
+	 * Lista wyboru użytkownika jest na bazie ComboBox.
+	 * Pole wpisywania hasła na bazie PasswordField.
 	 * Przyciski- Logon i Anuluj -  na bazie ButtonType.
-	 * Zarzadca ukladu - GridPane.
+	 * Zarządca układu - GridPane.
 	 * 
-	 * Dodatkowo, lista wyboru srodowiska, lista wyborow uzytkownika
-	 * i Pole wpisywania hasla maja dodane listenery, aby moc sprawdzic, czy
-	 * przycisk Logon powinien byc juz aktywowany oraz czy lista uzytkownikow powinna sie
-	 * zmienic, kiedy srodowisko zostalo zmienione.
+	 * Dodatkowo, lista wyboru środowiska, lista wyborów użytkownika
+	 * i pole wpisywania hasła mają dodane listenery, aby móc sprawdzić, czy
+	 * przycisk Logon powinien być już aktywowany oraz czy lista użytkowników powinna się
+	 * zmienić, kiedy środowisko zostało zmienione.
 	 * 
-	 * Korzysta tez z metody na obiekcie klasy Dialog - setResultConverter,
-	 * aby przekonwertowac ButtonType, kliknietego przez uzytkownika w Pair<Environment, String>.
-	 * Sprawdzane jest, czy zostala wybrana opcja ok oraz czy haslo jest prawidlowe 
-	 * dla danego uzytkownika w danym srodowisku.
+	 * Korzysta też z metody na obiekcie klasy Dialog - setResultConverter,
+	 * aby przekonwertować ButtonType, klikniętego przez użytkownika w Pair<Environment, String>.
+	 * Sprawdzane jest, czy została wybrana opcja ok oraz czy hasło jest prawidłowe 
+	 * dla danego użytkownika w danym środowisku.
 	 * 
 	 *
-	 * @param windowTitle ustawia tytul okna logowania
-	 * @param headerTitle ustawia tytul naglowka logowania
+	 * @param windowTitle ustawia tytuł okna logowania
+	 * @param headerTitle ustawia tytuł nagłówka logowania
 	 * 
 	 */
 	LogonDialog(String windowTitle, String headerTitle) {
@@ -64,16 +65,18 @@ public class LogonDialog {
 		dialog = new Dialog<>();
 		dialog.setTitle(windowTitle);
 		dialog.setHeaderText(headerTitle);
-		ImageView loginImage = new ImageView(this.getClass().getResource("login.png").toString());
+		Image i = new Image("login.png");
+		ImageView loginImage = new ImageView();
+		loginImage.setImage(i);
 		loginImage.setPreserveRatio(true);
 		loginImage.setFitHeight(100);
 		dialog.setGraphic(loginImage);
 			
 		grid = new GridPane();
 		
-		env = new Label("Srodowisko: ");
-		userLabel = new Label("Uzytkownik: ");
-		passLabel = new Label("Haslo: ");
+		env = new Label("Środowisko: ");
+		userLabel = new Label("Użytkownik: ");
+		passLabel = new Label("Hasło: ");
 		
 		
 	    logOnButton = new ButtonType("Logon", ButtonData.OK_DONE);
@@ -88,7 +91,7 @@ public class LogonDialog {
 	    userIdComboBox.setEditable(true);    
 	    
 	    passField = new PasswordField();
-	    passField.setPromptText("Haslo");
+	    passField.setPromptText("Hasło");
 	    
 		
 		grid.add(env, 1, 1);
@@ -97,6 +100,9 @@ public class LogonDialog {
 		grid.add(userIdComboBox, 2, 2);
 		grid.add(passLabel, 1, 3);
 		grid.add(passField, 2, 3);
+		
+		grid.setHgap(10);
+		grid.setVgap(10);
 	    
 	    dialog.getDialogPane().getButtonTypes().addAll(logOnButton, cancelButton);
 	    dialog.getDialogPane().lookupButton(logOnButton).setDisable(true);
@@ -124,10 +130,10 @@ public class LogonDialog {
 	}
 	
 	
-	/** Metoda changeUserList. Zmienia liste uzytkownikow przy zmianach srodowiska.
+	/** Metoda changeUserList. Zmienia listę użytkowników przy zmianach środowiska.
 	 *
-	 * @param user obiekt, zawierajacy informacje o uzytkownikach dla danych srodowisk
-	 * @param oldVal stara wartosc srodowiska
+	 * @param user obiekt, zawierający informacje o użytkownikach dla danych środowisk
+	 * @param oldVal stara wartość środowiska
 	 * 
 	 */
 	private void changeUserList(Users user, Environment oldVal) {
@@ -137,8 +143,8 @@ public class LogonDialog {
     	changeButton();
 	}
 	
-	/* Metoda changeButton.
-	 * Sprawdza, czy wszystkie pola, wymagana do aktywacji przycisku Logon, zostaly zapelnione.
+	/** Metoda changeButton.
+	 * Sprawdza, czy wszystkie pola, wymagana do aktywacji przycisku Logon, zostały zapełnione.
 	 */
 	private void changeButton() {
 		if(userIdComboBox.getValue() == null || environmentChoiceBox.getValue() == null
@@ -151,7 +157,7 @@ public class LogonDialog {
 	
 	/** Metoda showAndWait.
 	 * 
-	 * @return zwraca pare z wybranym srodowiskiem oraz uzytkownikiem, ktory sie do niego poprawnie zalogowal, a jesli niepoprawnie to null
+	 * @return zwraca pare z wybranym środowiskiem oraz użytkownikiem, ktory się do niego poprawnie zalogował, a jeśli niepoprawnie to null
 	 */
 	public Optional<Pair<Environment, String>> showAndWait() {
 		return dialog.showAndWait();

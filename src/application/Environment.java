@@ -1,7 +1,7 @@
 package application;
 
 /**
-* Environment - prosta klasa, zawierajaca informacje o srodowisku.
+* Environment - prosta klasa, zawierająca informacje o środowisku.
 * 
 * @author Karolina Bilewicz / K.Bilewicz@stud.elka.pw.edu.pl
 * @version 0.9
@@ -9,19 +9,19 @@ package application;
 public class Environment {
 	private String name;
 	/** Konstruktor Environment
-	 * @param n nazwa srodowiska
+	 * @param n nazwa środowiska
 	 */
 	Environment(String n) {
 		name = n;
 	}
 	/** Metoda getName()
-	 * @return nazwa srodowiska
+	 * @return nazwa środowiska
 	 */
 	public String getName() {
 		return name;
 	}
-	/** Metoda toString(), potrzebna, aby wyswietlac w ChoiceBox
-	 * @return nazwa srodowiska
+	/** Metoda toString(), potrzebna, aby wyświetlać w ChoiceBox
+	 * @return nazwa środowiska
 	 */
 	public String toString() {
 		return name;
